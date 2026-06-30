@@ -11,13 +11,13 @@ Maintenance scripts for authorized AnyDesk support tasks on Windows and Linux.
 
 This toolkit is intended for basic troubleshooting scenarios where AnyDesk is installed but the service, process, cache, traces or user-side temporary files may be causing issues.
 
-It does not reset, modify, hide or regenerate AnyDesk IDs, licenses, access controls, audit data or traceability mechanisms.
+It does not modify, hide or regenerate licenses, access controls, audit data or traceability mechanisms. It can be used to securely reset the AnyDesk ID on Windows.
 
 ## Current status
 
 | Platform | Status | Script |
 |---|---|---|
-| Windows | Available | `scripts/windows/anydesk-maintenance.bat` |
+| Windows | Available | `scripts/windows/anydesk-maintenance.cmd` |
 | Linux | Available | `scripts/linux/anydesk-maintenance.sh` |
 | macOS | Available | `scripts/macos/anydesk-maintenance.sh` |
 
@@ -34,9 +34,9 @@ It does not reset, modify, hide or regenerate AnyDesk IDs, licenses, access cont
 
 ## What this project does not do
 
-This toolkit is not a crack, bypass, license reset tool or ID reset tool.
+This toolkit is not a crack, bypass, or license reset tool.
 
-It will not unlock paid features, remove commercial-use limits, alter licensing state, bypass AnyDesk restrictions or change the device identity.
+It will not unlock paid features, remove commercial-use limits, alter licensing state, or bypass AnyDesk restrictions.
 
 If you use AnyDesk frequently or in a professional environment, use an official AnyDesk license.
 
@@ -78,7 +78,7 @@ anydesk-maintenance-toolkit/
 ├─ .gitignore
 ├─ scripts/
 │  ├─ windows/
-│  │  └─ anydesk-maintenance.bat
+│  │  └─ anydesk-maintenance.cmd
 │  ├─ linux/
 │  │  └─ anydesk-maintenance.sh
 │  └─ macos/
@@ -97,7 +97,7 @@ anydesk-maintenance-toolkit/
 Open PowerShell and run:
 
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DeXon18/anydesk-maintenance-toolkit/main/scripts/windows/anydesk-maintenance.bat" -OutFile "$env:TEMP\anydesk-maintenance.bat"; Start-Process "$env:TEMP\anydesk-maintenance.bat" -Verb RunAs
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DeXon18/anydesk-maintenance-toolkit/main/scripts/windows/anydesk-maintenance.cmd?v=$RANDOM" -OutFile "anydesk-maintenance.cmd"; (Get-Content "anydesk-maintenance.cmd") | Set-Content "anydesk-maintenance.cmd"; Start-Process "anydesk-maintenance.cmd" -Verb RunAs
 ```
 
 The script will request administrator permissions before running.
@@ -127,7 +127,7 @@ sudo ./anydesk-maintenance.sh
 1. Download the file:
 
 ```txt
-scripts/windows/anydesk-maintenance.bat
+scripts/windows/anydesk-maintenance.cmd
 ```
 
 2. Right-click the file.
@@ -210,7 +210,7 @@ Do not use this toolkit to bypass licensing, usage limits, identity checks or ac
 
 ## Responsible use
 
-This toolkit does not reset AnyDesk IDs, licenses or usage restrictions.
+This toolkit does not reset licenses or usage restrictions.
 
 It only performs maintenance tasks on service state, process state, selected user files, temporary data and logs.
 

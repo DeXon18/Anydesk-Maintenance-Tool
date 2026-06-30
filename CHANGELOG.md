@@ -22,6 +22,8 @@ MAJOR.MINOR.PATCH
 
 ### Added
 
+- Added AnyDesk ID reset capability to Windows script.
+- Renamed Windows script from .bat to .cmd to improve PowerShell compatibility.
 - Initial Windows maintenance script.
 - Administrator permission check.
 - AnyDesk service stop and start flow.
@@ -41,7 +43,7 @@ MAJOR.MINOR.PATCH
 ### Security
 
 - Added explicit scope limitation for authorized maintenance use only.
-- Avoided license, device identity, access control, audit and traceability modifications.
+- Avoided license, access control, audit and traceability modifications.
 - Avoided generic temporary folder cleanup outside the script working directory.
 
 ### Notes

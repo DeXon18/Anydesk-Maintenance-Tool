@@ -2,7 +2,7 @@
 
 This guide explains how to run the AnyDesk maintenance script on Windows.
 
-The script is intended for authorized troubleshooting and maintenance tasks only. It does not reset AnyDesk IDs, licenses, usage restrictions, access controls or audit data.
+The script is intended for authorized troubleshooting and maintenance tasks only. It does not reset licenses, usage restrictions, access controls or audit data.
 
 ## Requirements
 
@@ -17,7 +17,7 @@ The script is intended for authorized troubleshooting and maintenance tasks only
 The Windows script is located at:
 
 ```txt
-scripts/windows/anydesk-maintenance.bat
+scripts/windows/anydesk-maintenance.cmd
 ```
 
 ## Method 1: run manually
@@ -32,7 +32,7 @@ scripts/windows/
 3. Right-click:
 
 ```txt
-anydesk-maintenance.bat
+anydesk-maintenance.cmd
 ```
 
 4. Select:
@@ -49,8 +49,9 @@ Run as administrator
 Open PowerShell as administrator and run:
 
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/YOUR_USER/anydesk-maintenance-toolkit/main/scripts/windows/anydesk-maintenance.bat" -OutFile "$env:TEMP\anydesk-maintenance.bat"
-Start-Process "$env:TEMP\anydesk-maintenance.bat" -Verb RunAs
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/YOUR_USER/anydesk-maintenance-toolkit/main/scripts/windows/anydesk-maintenance.cmd?v=$RANDOM" -OutFile "anydesk-maintenance.cmd"
+(Get-Content "anydesk-maintenance.cmd") | Set-Content "anydesk-maintenance.cmd"
+Start-Process "anydesk-maintenance.cmd" -Verb RunAs
 ```
 
 Replace `YOUR_USER` with your GitHub username or organization.
@@ -73,12 +74,9 @@ The script performs the following actions:
 ## What the script does not do
 
 The script does not:
-
-- Reset the AnyDesk ID.
 - Reset or bypass the AnyDesk license.
 - Unlock paid features.
 - Remove commercial-use restrictions.
-- Modify device identity.
 - Hide usage history.
 - Disable audit or traceability mechanisms.
 - Circumvent access controls.
@@ -194,5 +192,5 @@ Do not share logs publicly if they include usernames, local paths, device names 
 README.md
 SECURITY.md
 CHANGELOG.md
-scripts/windows/anydesk-maintenance.bat
+scripts/windows/anydesk-maintenance.cmd
 ```
