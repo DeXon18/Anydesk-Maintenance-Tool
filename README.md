@@ -12,6 +12,16 @@ This toolkit is intended for basic troubleshooting scenarios where AnyDesk is in
 > [!NOTE]
 > It does not modify, hide or regenerate licenses, access controls, audit data or traceability mechanisms.
 
+### 🔄 Reset AnyDesk Free License (ID)
+
+This script allows you to reset the AnyDesk free license, removing the block that prevents connections to other devices after continuous use.
+
+> [!WARNING]
+> **Important:** This is not a crack. The goal is to restore the functionality of AnyDesk with the free license, within the limitations of the application itself. It will not unlock AnyDesk permanently! It only allows you to use it for free again without interruptions.
+
+> [!TIP]
+> We strongly recommend purchasing an official license if you intend to use it frequently or professionally.
+
 ---
 
 ## ⚡ Quick Start
