@@ -23,13 +23,13 @@ It does not reset, modify, hide or regenerate AnyDesk IDs, licenses, access cont
 
 ## What this project does
 
-- Stops the AnyDesk service when possible.
+- Stops the AnyDesk service or application when possible.
 - Closes stuck AnyDesk processes.
 - Creates a temporary backup of selected user configuration files.
 - Cleans non-critical user-side temporary files, thumbnails and trace files.
 - Restores the backed-up user configuration.
-- Starts the AnyDesk service again.
-- Opens AnyDesk after the maintenance process.
+- Starts the AnyDesk service or application again.
+- Opens AnyDesk after the maintenance process when supported.
 - Saves an execution log for troubleshooting.
 
 ## What this project does not do
@@ -44,8 +44,7 @@ If you use AnyDesk frequently or in a professional environment, use an official 
 
 - Windows
 - Linux
-
-macOS support is not included.
+- macOS
 
 ## Requirements
 
@@ -62,6 +61,12 @@ macOS support is not included.
 - `sudo` permissions.
 - `systemd` based distribution recommended.
 
+### macOS
+
+- AnyDesk installed in `/Applications/AnyDesk.app`.
+- Administrator permissions.
+- Terminal access.
+
 ## Repository structure
 
 ```txt
@@ -72,15 +77,16 @@ anydesk-maintenance-toolkit/
 ├─ SECURITY.md
 ├─ .gitignore
 ├─ scripts/
-├─ windows/
-│  └─ anydesk-maintenance.bat
-├─ linux/
-│  └─ anydesk-maintenance.sh
-└─ macos/
-   └─ anydesk-maintenance.sh
+│  ├─ windows/
+│  │  └─ anydesk-maintenance.bat
+│  ├─ linux/
+│  │  └─ anydesk-maintenance.sh
+│  └─ macos/
+│     └─ anydesk-maintenance.sh
 └─ docs/
    ├─ windows-usage.md
    ├─ linux-usage.md
+   ├─ macos-usage.md
    └─ troubleshooting.md
 ```
 
@@ -88,21 +94,30 @@ anydesk-maintenance-toolkit/
 
 ### Windows
 
-Run PowerShell as administrator:
+Open PowerShell and run:
 
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DeXon18/anydesk-maintenance-toolkit/main/scripts/windows/anydesk-maintenance.bat" -OutFile "$env:TEMP\anydesk-maintenance.bat"
-Start-Process "$env:TEMP\anydesk-maintenance.bat" -Verb RunAs
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DeXon18/anydesk-maintenance-toolkit/main/scripts/windows/anydesk-maintenance.bat" -OutFile "$env:TEMP\anydesk-maintenance.bat"; Start-Process "$env:TEMP\anydesk-maintenance.bat" -Verb RunAs
 ```
 
-Replace `YOUR_USER` with your GitHub username or organization.
+The script will request administrator permissions before running.
 
 ### Linux
 
-Linux support is planned. Once available, the script will be executed with:
+Run:
 
 ```bash
-wget https://raw.githubusercontent.com/DeXon18/anydesk-maintenance-toolkit/main/scripts/linux/anydesk-maintenance.sh
+wget https://raw.githubusercontent.com/DeXon18/anydesk-maintenance-toolkit/main/scripts/linux/anydesk-maintenance.sh -O anydesk-maintenance.sh
+chmod +x anydesk-maintenance.sh
+sudo ./anydesk-maintenance.sh
+```
+
+### macOS
+
+Run:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/DeXon18/anydesk-maintenance-toolkit/main/scripts/macos/anydesk-maintenance.sh -o anydesk-maintenance.sh
 chmod +x anydesk-maintenance.sh
 sudo ./anydesk-maintenance.sh
 ```
@@ -120,12 +135,62 @@ scripts/windows/anydesk-maintenance.bat
 4. Wait until the script finishes.
 5. Review the log if an error appears.
 
+## Manual Linux usage
+
+1. Download the file:
+
+```txt
+scripts/linux/anydesk-maintenance.sh
+```
+
+2. Give execution permissions:
+
+```bash
+chmod +x anydesk-maintenance.sh
+```
+
+3. Run it as root:
+
+```bash
+sudo ./anydesk-maintenance.sh
+```
+
+## Manual macOS usage
+
+1. Download the file:
+
+```txt
+scripts/macos/anydesk-maintenance.sh
+```
+
+2. Give execution permissions:
+
+```bash
+chmod +x anydesk-maintenance.sh
+```
+
+3. Run it as root:
+
+```bash
+sudo ./anydesk-maintenance.sh
+```
+
 ## Logs
 
-On Windows, the latest execution log is saved to:
+### Windows
+
+The latest execution log is saved to:
 
 ```txt
 %TEMP%\AnyDesk_Maintenance_last.log
+```
+
+### Linux and macOS
+
+The latest execution log is saved to:
+
+```txt
+/tmp/anydesk-maintenance-last.log
 ```
 
 The temporary working directory is removed at the end of the execution.
@@ -155,7 +220,7 @@ Only run these scripts on machines where you have explicit permission.
 
 Review the script before running it, especially if you downloaded it from the internet.
 
-Do not execute remote scripts blindly with `curl | bash` or similar commands.
+Do not execute remote scripts blindly from unknown sources.
 
 Do not share logs publicly if they include usernames, local paths, device names or organization-specific information.
 
