@@ -1,0 +1,39 @@
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Script working directories
+AnyDesk_Maintenance_*/
+AnyDesk_Mantenimiento_*/
+
+# Backups
+backup/
+backups/
+*.bak
+*.backup
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.*
