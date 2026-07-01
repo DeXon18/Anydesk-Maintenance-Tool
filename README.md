@@ -5,8 +5,6 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Shell](https://img.shields.io/badge/scripts-Batch%20%7C%20Bash-lightgrey)
 ![Status](https://img.shields.io/badge/status-active-success)
-![Last Commit](https://img.shields.io/github/last-commit/DeXon18/Anydesk-Maintenance-Tool)
-![Repo Size](https://img.shields.io/github/repo-size/DeXon18/Anydesk-Maintenance-Tool)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 Maintenance scripts for AnyDesk support tasks on Windows, Linux, and macOS.
